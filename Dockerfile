@@ -15,7 +15,8 @@ RUN  yarn config set strict-ssl false && yarn install && yarn build
 FROM nginx:1.17
 COPY --from=build-step /app/build /usr/share/nginx/html
 RUN mkdir -p /opt/app && chown -R nginx:nginx /opt/app && chmod -R 775 /opt/app
-RUN sed -i 's/listen       80/listen       8080/' /etc/nginx/nginx.conf
+#RUN sed -i 's/listen       80/listen       8080/' /etc/nginx/nginx.conf
+RUN sed -i 's/listen       80/listen       8080/' /etc/nginx/conf.d/default.conf
 RUN chown -R nginx:nginx /var/cache/nginx && \
    chown -R nginx:nginx /var/log/nginx && \
    chown -R nginx:nginx /usr/share/nginx/html && \
