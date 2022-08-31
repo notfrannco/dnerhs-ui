@@ -10,4 +10,5 @@ FROM bitnami/nginx:1.20
 
 
 COPY --from=build-step /app/build /opt/bitnami/nginx/html/
+COPY ./nginx.conf /opt/bitnami/nginx/conf/
 COPY ./webapp.conf /opt/bitnami/nginx/conf/server_blocks/
